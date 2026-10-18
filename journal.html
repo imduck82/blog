@@ -1,0 +1,151 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title data-en="stuff that happens to me" data-es="cosas que me pasan"></title>
+        <meta name="description" data-en="silly website for my silly things :3c" data-es="pagina web boba para mis bobadas :3c" data-attr="content">
+        <meta name="author" data-en="zephyrus" data-es="zéfiro" data-attr="content">
+        <style>
+            @font-face {
+                font-family: "Comic Sans MS";
+                src: url("fonts/Comic Sans MS.ttf") format("truetype");
+            }
+
+            body {
+                background-repeat: repeat;
+                background-color: rgba(0,0,0,0.2); /* this is used for the background opacity */
+                background-image: url("assets/bg.gif");
+                background-blend-mode: multiply;
+                font-family: "Comic Sans MS";
+                font-size: 16pt;
+                line-height: 1.5;
+                color: white;
+            }
+
+            h2 {
+                line-height: 0.5;
+                font-size: 28px;
+            }
+
+            .main {
+                position: relative;
+                width: 800px;
+                margin: 0px auto;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+
+            .main::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background-image: url("assets/bg.png");
+                opacity: 0.2; /* post opacity, 0.2 or 0.7 */
+                z-index: -1;
+            }
+
+            .tabs {
+                display: flex;
+                justify-content: space-between;
+                width: 800px;
+                margin: 0px auto 0px;
+            }
+
+            .tabs a {
+                display: block;
+                padding: 8px 14px;
+                background-color: #444;
+                color: white;
+            }
+        </style>
+    </head>
+
+    <body>
+        <center>
+            <h1 id="title" style="-webkit-text-stroke: 0px white;"; data-en="my diary" data-es="mí diario"></h1>
+        <script>
+            const title = document.getElementById("title");
+            title.style.color = `rgb(${Math.round(Math.random()) * 255}, ${Math.round(Math.random()) * 255}, ${Math.round(Math.random()) * 255})`;
+            if (title.style.color === "rgb(0, 0, 0)") { title.style["-webkit-text-stroke"] = "2px white"; }
+        </script>
+        </center>
+
+        <nav class="tabs">
+                <a href="index.html" data-en="home" data-es="inicio"></a>
+                <a href="journal.html" data-en="my diary" data-es="mí diario"></a>
+                <a href="gallery.html" data-en="my pics" data-es="mis fotos"></a>
+                <a href="contact.html" data-en="contact" data-es="contacto"></a>
+                <a href="misc.html" data-en="other" data-es="otros"></a>
+                <a href="" onclick="toggle_lang()" data-en="español" data-es="english"></a>
+        </nav>
+
+        <div class="main">
+            <h2 data-en="october 1st, 2026" data-es="1 de octubre, 2026"></h2>
+            <p
+            data-en="today i made the first prototype for this website. no notes :p"
+            data-es="hoy he hecho el primer prototipo de esta página. sin comentarios :p">
+            </p>
+        </div><br>
+        <div class="main">
+            <h2 data-en="october 4th, 2026" data-es="4 de octubre, 2026"></h2>
+            <p
+            data-en="during the morning i went to the flea market with a friend from class<br>(i bought a casino roulette), at noon i celebrated my little cousin's birthday.
+            <br>it was also one of my best friend's birthday, but this friend lives abroad so we couldn't celebrate :("
+            data-es="por la mañana fui al mercadillo con un amigo de la facultad (he comprado una ruleta de casino), al mediodía celebré el cumpleaños de mi primo pequeño.
+            <br>también era el cumpleaños de une de mis mejores amigues, pero vive en el extranjero y no pudimos celebrarlo :("
+            data-html>
+        </div><br>
+        <div class="main">
+            <h2 data-en="october 10th, 2026" data-es="10 de octubre, 2026"></h2>
+            <p
+            data-en="today i went to the carnival <i>ferias del pilar</i>, in valdespartera. i went with 4 friends and i had plans to go with more, but they couldn't arrive before i had to go. i rode on 2 attractions and had fun"
+            data-es="hoy fui a las ferias del pilar, en valdespartera. he ido con 4 amigos y había quedado con más, pero al final no han podido venir antes de que me tuviera que ir. me subí a 2 atracciones y me lo pasé bien."
+            data-html>
+        </div><br>
+        <div class="main">
+            <h2 data-en="october 14th, 2026" data-es="14 de octubre, 2026"></h2>
+            <p
+            data-en="today was the birthday of two of my friends, who are twins. their mother planned out their birthday as a surprise, and none of us knew where they were taking us until we arrived to the laser tag enclosure. it was a counter strike based experience, and my team won 4-3."
+            data-es="hoy fue el cumpleaños de 2 de mis amigos, que son gemelos. su madre preparó el cumpleaños como sorpresa, y ninguno de nosotros sabíamos adónde nos estaba llevando hasta que llegamos al recinto de <i>laser tag</i>.<br>era una experiencia basada en <i>counter strike</i>, y mi equipo ganó 4-3."
+            data-html>
+        </div><br>
+        <div class="main">
+            <h2 data-en="october 17th, 2026" data-es="17 de octubre, 2026"></h2>
+            <p
+            data-en="i finished writing the blog, nothing else interesting except for studying :3"
+            data-es="hoy he acabado de hacer el blog, nada más interesante salvo estudiar hoy :3">
+        </div>
+
+        <script>
+            function set_lang(language) {
+                document.querySelectorAll("[data-en][data-es]").forEach(element => {
+                    const value = element.dataset[language];
+                    const attribute = element.dataset.attr;
+                    if (attribute) {
+                        element.setAttribute(attribute, value);
+                    } else if (element.hasAttribute("data-html")) {
+                        element.innerHTML = value;
+                    } else {
+                        element.textContent = value;
+                    }
+                });
+                document.documentElement.lang = language;
+                localStorage.setItem("language", language);
+            }
+            function init_lang() {
+                const saved = localStorage.getItem("language");
+                if (saved === "en" || saved === "es") {
+                    return saved;
+                }
+                if (navigator.language.toLowerCase().startsWith("es")) {
+                    return "es";
+                }
+                return "en";
+            }
+            function toggle_lang() {
+                const current = document.documentElement.lang;
+                set_lang(current === "en" ? "es" : "en");
+            }
+            set_lang(init_lang());
+        </script>
+    </body>
+</html>
