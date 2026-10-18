@@ -140,7 +140,7 @@
                 <img src="assets/pfp.png" width="250" height="250" data-en="my face &my cat :)" data-es="mi cara &mi gato :)" data-attr="alt">
                 <div class="info">
                     <b data-en="alias: " data-es="nombre: "></b><p style="display: inline;" data-en="zephyrus" data-es="zéfiro"></p><br>
-                    <b data-en="status: " data-es="estado: "></b><p style="display: inline;" data-en="birthday 🍰" data-es="cumpleaños 🍰"></p>
+                    <b data-en="status: " data-es="estado: "></b><p id="status" style="display: inline;" data-en="loading,," data-es="cargando,,"></p>
                 </div>
             </div>
 
@@ -208,6 +208,15 @@
                 set_lang(current === "en" ? "es" : "en");
             }
             set_lang(init_lang());
+        </script>
+        <script>
+            fetch("https://api.jsonpad.io/lists/4e314cc1-5a0d-4654-ab9c-28472ac6c36d/items/37219ddf-2673-4196-887a-07ef76fc2faf", {headers: {"x-api-token": "VPJzCCazPZqnJl7dbY5voua6TgAI7Ail"}})
+            .then(response => response.json())
+            .then(data => {
+                const status = document.getElementById("status");
+                status.dataset.en = data.data["status-en"];
+                status.dataset.es = data.data["status-es"];
+                status.textContent = status.dataset[document.documentElement.lang];});
         </script>
     </body>
 </html>
