@@ -1,0 +1,213 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title data-en="my website!!!!" data-es="mi pagina web!!!!"></title>
+        <meta name="description" data-en="silly website for my silly things :3c" data-es="pagina web boba para mis bobadas :3c" data-attr="content">
+        <meta name="author" data-en="zephyrus" data-es="zéfiro" data-attr="content">
+        <style>
+            @font-face {
+                font-family: "Comic Sans MS";
+                src: url("fonts/Comic Sans MS.ttf") format("truetype");
+            }
+
+            body {
+                background-repeat: repeat;
+                background-color: rgba(0,0,0,0.2); /* this is used for the background opacity */
+                background-image: url("assets/bg.gif");
+                background-blend-mode: multiply;
+                font-family: "Comic Sans MS";
+                font-size: 16pt;
+                line-height: 1.5;
+                color: white;
+            }
+
+            h2 {
+                line-height: 1;
+            }
+
+            .main {
+                position: relative;
+                width: 800px;
+                margin: 0px auto;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+
+            .main::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background-image: url("assets/bg.png");
+                opacity: 0.2; /* post opacity, 0.2 or 0.7 */
+                z-index: -1;
+            }
+
+            .pfp {
+                float: left;
+                width: 250px;
+                margin: 0 20px 15px 0;
+                text-align: center;
+            }
+
+            .pfp img {
+                display: block;
+                width: 250px;
+                height: 250px;
+            }
+
+            .info {
+                text-align: center;
+                line-height: 1.2;
+                padding-top: 5px;
+                padding-bottom: 0px;
+            }
+
+            .main::after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+
+            .tabs {
+                display: flex;
+                justify-content: space-between;
+                width: 800px;
+                margin: 0px auto 0px;
+            }
+
+            .tabs a {
+                display: block;
+                padding: 8px 14px;
+                background-color: #444;
+                color: white;
+            }
+        </style>
+    </head>
+
+    <body>
+        <center>
+            <h1 id="title" style="-webkit-text-stroke: 0px white;"; data-en="zephyr's blog" data-es="blog de zéfiro"></h1>
+        <script>
+            const title = document.getElementById("title");
+            title.style.color = `rgb(${Math.round(Math.random()) * 255}, ${Math.round(Math.random()) * 255}, ${Math.round(Math.random()) * 255})`;
+            if (title.style.color === "rgb(0, 0, 0)") { title.style["-webkit-text-stroke"] = "2px white"; }
+        </script>
+        <a href="https://linuxmint.com/"><img src="assets/gif0.gif" data-en="linux mint!" data-es="linux mint!" data-attr="alt"></a>
+        <img src="assets/gif1.gif" data-en="rainbowwwww" data-es="arcoirissss" data-attr="alt">
+        <img src="assets/gif2.gif" data-en="1312 woohoo" data-es="1312 woohoo" data-attr="alt">
+        <img src="assets/gif3.gif" data-en="fuck google" data-es="puto google" data-attr="alt">
+        <img src="assets/gif4.gif" data-en="gay gay gay" data-es="gay gay gay" data-attr="alt">
+        <img src="assets/gif5.gif" data-en="honse yayyy" data-es="caballo yay" data-attr="alt">
+        <br>
+        <img src="assets/gif6.gif" data-en="hehehe paws" data-es="ehehe patas" data-attr="alt">
+        <img src="assets/gif7.gif" data-en="twinfantasy" data-es="twinfantasy" data-attr="alt" onclick="playSong('song2')" style="cursor: pointer;">
+        <img src="assets/gif8.gif" data-en="they / them" data-es=" elle / le " data-attr="alt">
+        <img src="assets/gif9.gif" data-en="trans rites" data-es="yippe,trans" data-attr="alt">
+        <img src="assets/gifA.gif" data-en="nyan cat :3" data-es="nyan cat :3" data-attr="alt" onclick="playSong('songA')" style="cursor: pointer;">
+        <img src="assets/gifB.gif" data-en="fuck ai lol" data-es="putisima ia" data-attr="alt">
+        <script>
+            let playing = null
+            let audio = new Audio();
+            function playSong(song) {
+                if (playing === song) {
+                    audio.paused ? audio.play() : audio.pause();
+                } else {
+                    audio.pause();
+                    audio.currentTime = 0;
+                    audio.src = `assets/${song}.mp3`;
+                    playing = song;
+                    audio.play();
+                }
+                audio.onended = () => {
+                    playing = null;
+                }
+            }
+        </script>
+        <br><br>
+        </center>
+
+        <nav class="tabs">
+                <a href="/blog/" data-en="home" data-es="inicio"></a>
+                <a href="journal.html" data-en="my diary" data-es="mí diario"></a>
+                <a href="gallery.html" data-en="my pics" data-es="mis fotos"></a>
+                <a href="contact.html" data-en="contact" data-es="contacto"></a>
+                <a href="misc.html" data-en="other" data-es="otros"></a>
+                <a href="" onclick="toggle_lang()" data-en="español" data-es="english"></a>
+        </nav>
+
+        <div class="main">
+            <div class="pfp">
+                <img src="assets/pfp.png" width="250" height="250" data-en="my face &my cat :)" data-es="mi cara &mi gato :)" data-attr="alt">
+                <div class="info">
+                    <b data-en="alias: " data-es="nombre: "></b><p style="display: inline;" data-en="zephyrus" data-es="zéfiro"></p><br>
+                    <b data-en="status: " data-es="estado: "></b><p style="display: inline;" data-en="birthday 🍰" data-es="cumpleaños 🍰"></p>
+                </div>
+            </div>
+
+            <h2 data-en="introduction" data-es="introducción"></h2>
+            <p
+            data-en="welcome to my personal blog, i will probably rant about dumb stuff here and share stuff i find mildly cool or interesting."
+            data-es="bienvenidx a mi blog personal, seguramente hablaré sobre mierdas bobas y compartiré cosas que me parezcan medianamente interesantes.">
+            </p>
+            <p
+            data-en="i decided to start this blog because i sought a place in which to express myself, and i'm not great at art, but i am at programming :p"
+            data-es="decidí empezar a hacer este blog porque buscaba un espacio donde expresarme, y no se me dan bien las artes, pero si programar :p">
+            </p>
+            <h2 data-en="about me!" data-es="sobre mí!"></h2>
+            <p
+            data-en="im a undergraduate mathematics student, i'm 18 years old and i live in zaragoza, spain. i have a cat called peepo, pronounced [pˈipo].
+            <br>i love learning new things, one of my favorite activities is reading random articles about stuff that often times doesn't turn out to be interesting,
+            <br>or i have amiccable debates with friends and strangers about any topics."
+            data-es="soy un estudiante universitario de matemáticas, tengo 18 años y vivo en zaragoza, españa. tengo un gato que se llama peepo, pronunciado [pˈipo].
+            <br>me encanta aprender cosas nuevas, una de mis actividades favoritas es leer artículos aleatorios sobre cosas que muchas veces no son interesantes,
+            <br>o tener debates amigables con amigos y desconocidos sobre cualquier cosa."
+            data-html>
+            </p>
+            <p
+            data-en="i also enjoy hobbies such as board games and card games, doing small electronics experiments with my arduino controller, or with python code.
+            <br>other than that, i like playing chess, i enjoy doing casual hiking,<br>and since recently im learning (and failing) to ride on a skateboard."
+            data-es="también disfruto de hobbies como juegos de mesa y juegos de cartas,<br>hacer experimentos de electrónica con arduino, o con código en python.
+            <br>a parte de eso, me gusta el ajedrez, me encanta el senderismo tranquilo,<br>y desde hace poco estoy aprendiendo a ir en monopatín (y fallando)."
+            data-html>
+            </p>
+            <p
+            data-en="i don't have much more to say, i suppose as more stuff happens i'll slowly fill up this page, for now you can see stuff that happens to me in <a href='journal.html'> my diary</a>."
+            data-es="no tengo mucho más que decir, supongo que conforme se me ocurrán cosas iré rellenando está página, por ahora puedes ver lo que me pasa en <a href='journal.html'>mí diario</a>."
+            data-html>
+            </p>
+        </div>
+
+        <script>
+            function set_lang(language) {
+                document.querySelectorAll("[data-en][data-es]").forEach(element => {
+                    const value = element.dataset[language];
+                    const attribute = element.dataset.attr;
+                    if (attribute) {
+                        element.setAttribute(attribute, value);
+                    } else if (element.hasAttribute("data-html")) {
+                        element.innerHTML = value;
+                    } else {
+                        element.textContent = value;
+                    }
+                });
+                document.documentElement.lang = language;
+                localStorage.setItem("language", language);
+            }
+            function init_lang() {
+                const saved = localStorage.getItem("language");
+                if (saved === "en" || saved === "es") {
+                    return saved;
+                }
+                if (navigator.language.toLowerCase().startsWith("es")) {
+                    return "es";
+                }
+                return "en";
+            }
+            function toggle_lang() {
+                const current = document.documentElement.lang;
+                set_lang(current === "en" ? "es" : "en");
+            }
+            set_lang(init_lang());
+        </script>
+    </body>
+</html>

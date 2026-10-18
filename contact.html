@@ -1,0 +1,127 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title data-en="text me xoxo" data-es="escribeme xoxo"></title>
+        <meta name="description" data-en="silly website for my silly things :3c" data-es="pagina web boba para mis bobadas :3c" data-attr="content">
+        <meta name="author" data-en="zephyrus" data-es="zéfiro" data-attr="content">
+        <style>
+            @font-face {
+                font-family: "Comic Sans MS";
+                src: url("fonts/Comic Sans MS.ttf") format("truetype");
+            }
+
+            body {
+                background-repeat: repeat;
+                background-color: rgba(0,0,0,0.2); /* this is used for the background opacity */
+                background-image: url("assets/bg.gif");
+                background-blend-mode: multiply;
+                font-family: "Comic Sans MS";
+                font-size: 16pt;
+                line-height: 1.5;
+                color: white;
+            }
+
+            h2 {
+                line-height: 1;
+            }
+
+            .main {
+                position: relative;
+                width: 800px;
+                margin: 0px auto;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+
+            .main::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background-image: url("assets/bg.png");
+                opacity: 0.2; /* post opacity, 0.2 or 0.7 */
+                z-index: -1;
+            }
+
+            .tabs {
+                display: flex;
+                justify-content: space-between;
+                width: 800px;
+                margin: 0px auto 0px;
+            }
+
+            .tabs a {
+                display: block;
+                padding: 8px 14px;
+                background-color: #444;
+                color: white;
+            }
+        </style>
+    </head>
+
+    <body>
+        <center>
+            <h1 id="title" style="-webkit-text-stroke: 0px white;"; data-en="contact" data-es="contacto"></h1>
+        <script>
+            const title = document.getElementById("title");
+            title.style.color = `rgb(${Math.round(Math.random()) * 255}, ${Math.round(Math.random()) * 255}, ${Math.round(Math.random()) * 255})`;
+            if (title.style.color === "rgb(0, 0, 0)") { title.style["-webkit-text-stroke"] = "2px white"; }
+        </script>
+        </center>
+
+        <nav class="tabs">
+                <a href="/blog/" data-en="home" data-es="inicio"></a>
+                <a href="journal.html" data-en="my diary" data-es="mí diario"></a>
+                <a href="gallery.html" data-en="my pics" data-es="mis fotos"></a>
+                <a href="contact.html" data-en="contact" data-es="contacto"></a>
+                <a href="misc.html" data-en="other" data-es="otros"></a>
+                <a href="" onclick="toggle_lang()" data-en="español" data-es="english"></a>
+        </nav>
+
+        <div class="main">
+            <h2 data-en="where to find me" data-es="donde encontrarme"></h2>
+            <p
+            data-en="here's a list of my public social media where i'm active:"
+            data-es="aqui hay una lista de mis redes sociales públicas en las que estoy activo:">
+            </p>
+            <ul>
+            <li>instagram: <a href="https://www.instagram.com/imduck82/">@imduck82</a>
+            <li>discord: <a href="https://discord.com/users/1251897214683578401/">meoow_3</a>
+            <li>linktree: <a href="https://linktr.ee/imduck82">imduck82</a>
+            </ul>
+            <p data-en="that's it." data-es="ya esta.">
+        </div>
+
+        <script>
+            function set_lang(language) {
+                document.querySelectorAll("[data-en][data-es]").forEach(element => {
+                    const value = element.dataset[language];
+                    const attribute = element.dataset.attr;
+                    if (attribute) {
+                        element.setAttribute(attribute, value);
+                    } else if (element.hasAttribute("data-html")) {
+                        element.innerHTML = value;
+                    } else {
+                        element.textContent = value;
+                    }
+                });
+                document.documentElement.lang = language;
+                localStorage.setItem("language", language);
+            }
+            function init_lang() {
+                const saved = localStorage.getItem("language");
+                if (saved === "en" || saved === "es") {
+                    return saved;
+                }
+                if (navigator.language.toLowerCase().startsWith("es")) {
+                    return "es";
+                }
+                return "en";
+            }
+            function toggle_lang() {
+                const current = document.documentElement.lang;
+                set_lang(current === "en" ? "es" : "en");
+            }
+            set_lang(init_lang());
+        </script>
+    </body>
+</html>
