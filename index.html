@@ -7,13 +7,13 @@
         <style>
             @font-face {
                 font-family: "Comic Sans MS";
-                src: url("fonts/Comic Sans MS.ttf") format("truetype");
+                src: url("assets/Comic Sans MS.ttf") format("truetype");
             }
 
             body {
                 background-repeat: repeat;
-                background-color: rgba(0,0,0,0.2); /* this is used for the background opacity */
-                background-image: url("assets/bg.gif");
+                background-color: rgba(0,0,0,0.2);
+                background-image: url("assets/bg.gif"); /* image credit: https://art.teleportacia.org/observation/vernacular/stars/ */
                 background-blend-mode: multiply;
                 font-family: "Comic Sans MS";
                 font-size: 16pt;
@@ -38,7 +38,7 @@
                 position: absolute;
                 inset: 0;
                 background-image: url("assets/bg.png");
-                opacity: 0.2; /* post opacity, 0.2 or 0.7 */
+                opacity: 0.2;
                 z-index: -1;
             }
 
@@ -176,7 +176,34 @@
             data-html>
             </p>
         </div>
+        <center><p data-en="visitor counter: " data-es="contador de visitas: "></p><div data-en="loading,," data-es="cargando,," id="user-count"></div></center><br>
 
+        <script>
+            function displayCount(count) {
+                const container = document.getElementById("user-count");
+                container.replaceChildren();
+                for (const digit of String(count).padStart(6, "0")) {
+                    const counter = document.createElement("img");
+                    counter.src = `assets/${digit}.png`; /* image credit: https://github.com/mholt/caddy-hitcounter/tree/main/digits/bright_green */
+                    counter.width= 25;
+                    counter.alt = "";
+                    container.appendChild(counter);}}
+
+            if (!localStorage.getItem("user-counted")) {
+                localStorage.setItem("user-counted", "1");
+                fetch("https://api.jsonpad.io/lists/4e314cc1-5a0d-4654-ab9c-28472ac6c36d/items/870864f1-20fe-4258-94e1-43d617af0a57/data",
+                {headers: {"x-api-token": "MjLmKLw5oy0QWrlDh5G+Amkoxb4P/sDo"}})
+                .then(response => response.json())
+                .then(data => {
+                    fetch("https://api.jsonpad.io/lists/4e314cc1-5a0d-4654-ab9c-28472ac6c36d/items/870864f1-20fe-4258-94e1-43d617af0a57/data",
+                    {method: "PATCH", headers: {"x-api-token": "MjLmKLw5oy0QWrlDh5G+Amkoxb4P/sDo", "Content-Type": "application/json"}, body: JSON.stringify([{op: "replace", path: "/count", value: data.count + 1}])});
+                    displayCount(Number(data.count ?? 999998)+1);});
+            } else {
+                fetch("https://api.jsonpad.io/lists/4e314cc1-5a0d-4654-ab9c-28472ac6c36d/items/870864f1-20fe-4258-94e1-43d617af0a57/data",
+                {headers: {"x-api-token": "MjLmKLw5oy0QWrlDh5G+Amkoxb4P/sDo"}})
+                .then(response => response.json())
+                .then(data => displayCount(data.count ?? 999999));}
+        </script>
         <script>
             function set_lang(language) {
                 document.querySelectorAll("[data-en][data-es]").forEach(element => {
@@ -210,7 +237,8 @@
             set_lang(init_lang());
         </script>
         <script>
-            fetch("https://api.jsonpad.io/lists/4e314cc1-5a0d-4654-ab9c-28472ac6c36d/items/37219ddf-2673-4196-887a-07ef76fc2faf", {headers: {"x-api-token": "VPJzCCazPZqnJl7dbY5voua6TgAI7Ail"}})
+            fetch("https://api.jsonpad.io/lists/4e314cc1-5a0d-4654-ab9c-28472ac6c36d/items/37219ddf-2673-4196-887a-07ef76fc2faf",
+            {headers: {"x-api-token": "VPJzCCazPZqnJl7dbY5voua6TgAI7Ail"}})
             .then(response => response.json())
             .then(data => {
                 const status = document.getElementById("status");
