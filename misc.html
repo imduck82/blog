@@ -85,7 +85,8 @@
         </div><br>
 
         <script>
-            if (!localStorage.getItem("language")) {
+            if (!localStorage.getItem("user-counted")) {
+                localStorage.setItem("user-counted", "1");
                 fetch("https://api.jsonpad.io/lists/4e314cc1-5a0d-4654-ab9c-28472ac6c36d/items/870864f1-20fe-4258-94e1-43d617af0a57/data",
                 {headers: {"x-api-token": "MjLmKLw5oy0QWrlDh5G+Amkoxb4P/sDo"}})
                 .then(response => response.json())
