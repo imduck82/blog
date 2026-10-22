@@ -12,8 +12,8 @@
 
             body {
                 background-repeat: repeat;
-                background-color: rgba(0,0,0,0.2); /* this is used for the background opacity */
-                background-image: url("assets/bg.gif");
+                background-color: rgba(0,0,0,0.2);
+                background-image: url("assets/bg.gif"); /* image credit: https://art.teleportacia.org/observation/vernacular/stars/ */
                 background-blend-mode: multiply;
                 font-family: "Comic Sans MS";
                 font-size: 16pt;
@@ -38,7 +38,7 @@
                 position: absolute;
                 inset: 0;
                 background-image: url("assets/bg.png");
-                opacity: 0.2; /* post opacity, 0.2 or 0.7 */
+                opacity: 0.2;
                 z-index: -1;
             }
 
@@ -184,7 +184,7 @@
                 container.replaceChildren();
                 for (const digit of String(count).padStart(6, "0")) {
                     const counter = document.createElement("img");
-                    counter.src = `assets/${digit}.png`;
+                    counter.src = `assets/${digit}.png`; /* image credit: https://github.com/mholt/caddy-hitcounter/tree/main/digits/bright_green */
                     counter.width= 25;
                     counter.alt = "";
                     container.appendChild(counter);}}
@@ -196,7 +196,7 @@
                 .then(data => {
                     fetch("https://api.jsonpad.io/lists/4e314cc1-5a0d-4654-ab9c-28472ac6c36d/items/870864f1-20fe-4258-94e1-43d617af0a57/data",
                     {method: "PATCH", headers: {"x-api-token": "MjLmKLw5oy0QWrlDh5G+Amkoxb4P/sDo", "Content-Type": "application/json"}, body: JSON.stringify([{op: "replace", path: "/count", value: data.count + 1}])});
-                    displayCount(data.count+1);});
+                    displayCount(Number(data.count ?? 0)+1);});
             } else {
                 fetch("https://api.jsonpad.io/lists/4e314cc1-5a0d-4654-ab9c-28472ac6c36d/items/870864f1-20fe-4258-94e1-43d617af0a57/data",
                 {headers: {"x-api-token": "MjLmKLw5oy0QWrlDh5G+Amkoxb4P/sDo"}})
