@@ -92,7 +92,8 @@
                 .then(response => response.json())
                 .then(data => {
                     fetch("https://api.jsonpad.io/lists/4e314cc1-5a0d-4654-ab9c-28472ac6c36d/items/870864f1-20fe-4258-94e1-43d617af0a57/data",
-                    {method: "PATCH", headers: {"x-api-token": "MjLmKLw5oy0QWrlDh5G+Amkoxb4P/sDo", "Content-Type": "application/json"}, body: JSON.stringify([{op: "replace", path: "/count", value: data.count + 1}])});}
+                    {method: "PATCH", headers: {"x-api-token": "MjLmKLw5oy0QWrlDh5G+Amkoxb4P/sDo", "Content-Type": "application/json"}, body: JSON.stringify([{op: "replace", path: "/count", value: data.count + 1}])});
+                    displayCount(Number(data.count ?? 0)+1);});}
         </script>
         <script>
             function set_lang(language) {

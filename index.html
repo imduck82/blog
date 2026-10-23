@@ -242,8 +242,8 @@
             .then(response => response.json())
             .then(data => {
                 const status = document.getElementById("status");
-                status.dataset.en = data.data["status-en"];
-                status.dataset.es = data.data["status-es"];
+                status.dataset.en = data["status-en"];
+                status.dataset.es = data["status-es"];
                 status.textContent = status.dataset[document.documentElement.lang];});
         </script>
     </body>
