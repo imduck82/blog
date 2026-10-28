@@ -78,12 +78,51 @@
         </nav>
 
         <div class="main">
-            <h2 data-en="PAGE UNDER CONSTRUCTION" data-es="PÁGINA EN OBRAS"></h2>
+            <h2 data-en="miscellaneous" data-es="misceláneo"></h2>
             <p
-            data-en="not because i haven't had time to finish it, but because i can't think of anything that should go here, but i wanted to have this page just in case."
-            data-es="no porque no me haya dado tiempo a acabarla, sino porque no se me ocurre que debería ir aquí, pero quería tener esto aquí por si acaso para el futuro.">
+            data-en="here goes my small projects and tinkers (mostly digital ones), since the pages <a href='journal.html'>my diary</a> and <a href='gallery.html'>my pics</a> are reserved to share stuff that happens to me in my day to day, in real life :p"
+            data-es="aquí van mis pequeños proyectos y experimentos (mayormente digitales), ya que las páginas de <a href='journal.html'>mi diario</a> y <a href='gallery.html'>mis fotos</a> están reservados para cosas que me suceden en el día a día en la vida real :p"
+            data-html>
         </div><br>
-
+        <div class="main">
+            <h2 data-en="desmos_0" data-es="desmos_0"></h2>
+            <p
+            data-en="we can see a very simple spinning polar equation as represented in <a href='https://www.desmos.com/calculator'>desmos</a>. other than the somewhat complicated color formula, it isn't too fascinating. fun fact: to embed this graphing calculator window, i had to apply for a free personal project use <a href='https://www.desmos.com/my-api'>api key</a>. i'm desmos' #1 glazer, they're amazing"
+            data-es="podemos ver una ecuación polar simple que está girando, dibujada en <a href='https://www.desmos.com/calculator'>desmos</a>. a parte de la fórmula algo complicada para el color, no es muy interesante. dato curioso: para integrar esta ventana de calculadora gráfica, solicité una <a href='https://www.desmos.com/my-api?lang=es'>clave api</a> gratis de proyecto personal. soy el fan #1 de desmos, son geniales."
+            data-html>
+        </div><br>
+        <script defer src="https://www.desmos.com/api/v1.12/calculator.js?apiKey=e87ef15dcd7241adb4291a376ce81c59"></script>
+        <div id="calculator" style="width: 800px; height: 400px; margin: 0px auto;"></div><br>
+        <script type="module">
+            var elt = document.getElementById('calculator');
+            var calculator = Desmos.GraphingCalculator(elt, {brailleControls: false, backgroundColor: '#000', textColor: '#fff', invertedColorsControl: false, audio: false, muted: false, lockViewport: true, border: false, zoomButtons: false, degreeMode: false, pointsOfInterest: false, colors: {}, showGrid: false, showXAxis: false, showYAxis: false, expressions: false, settingsMenu: false});
+            calculator.setMathBounds({left: -3, right: 3, bottom: -1.5, top: 1.5});
+            calculator.setExpression({id: "0", latex: "t_0=0", sliderBounds: { min: "0", max: "1"}, playing: true});
+            calculator.setState((state => (Object.assign(state.expressions.list[0].slider, {loopMode: "LOOP_FORWARD"}), state))(calculator.getState()));
+            calculator.setExpression({id: "1", latex: "c_{r}\\left(x\\right)=\\left\\{0\\le x\\le1:\\left\\{x\\le\\frac{1}{6}:1,\\left\\{x\\le\\frac{2}{6}:-6x+2,\\left\\{x\\le\\frac{3}{6}:0,\\left\\{x\\le\\frac{4}{6}:0,\\left\\{x\\le\\frac{5}{6}:6x-4,1\\right\\}\\right\\}\\right\\}\\right\\}\\right\\}\\right\\}", hidden: true});
+            calculator.setExpression({id: "2", latex: "c_{g}\\left(x\\right)=\\left\\{0\\le x\\le1:\\left\\{x\\le\\frac{1}{6}:6x,\\left\\{x\\le\\frac{2}{6}:1,\\left\\{x\\le\\frac{3}{6}:1,\\left\\{x\\le\\frac{4}{6}:-6x+4,0\\right\\}\\right\\}\\right\\}\\right\\}\\right\\}", hidden: true});
+            calculator.setExpression({id: "3", latex: "c_{b}\\left(x\\right)=\\left\\{0\\le x\\le1:\\left\\{x\\le\\frac{1}{6}:0,\\left\\{x\\le\\frac{2}{6}:0,\\left\\{x\\le\\frac{3}{6}:6x-2,\\left\\{x\\le\\frac{4}{6}:1,\\left\\{x\\le\\frac{5}{6}:1,-6x+6\\right\\}\\right\\}\\right\\}\\right\\}\\right\\}\\right\\}", hidden: true});
+            calculator.setExpression({id: "4", latex: "c_{0}=\\operatorname{rgb}\\left(255c_{r}\\left(t_{0}\\right),255c_{g}\\left(t_{0}\\right),255c_{b}\\left(t_{0}\\right)\\right)"});
+            calculator.setExpression({id: "5", latex: "c_{1}=\\operatorname{rgb}\\left(255c_{b}\\left(t_{0}\\right),255c_{r}\\left(t_{0}\\right),255c_{g}\\left(t_{0}\\right)\\right)"});
+            calculator.setExpression({id: "6", latex: "c_{2}=\\operatorname{rgb}\\left(255c_{g}\\left(t_{0}\\right),255c_{b}\\left(t_{0}\\right),255c_{r}\\left(t_{0}\\right)\\right)"});
+            calculator.setExpression({id: "7", latex: "c_{3}=\\operatorname{rgb}\\left(255-255c_{r}\\left(t_{0}\\right),255-255c_{g}\\left(t_{0}\\right),255-255c_{b}\\left(t_{0}\\right)\\right)"});
+            calculator.setExpression({id: "8", latex: "c_{4}=\\operatorname{rgb}\\left(255-255c_{b}\\left(t_{0}\\right),255-255c_{r}\\left(t_{0}\\right),255-255c_{g}\\left(t_{0}\\right)\\right)"});
+            calculator.setExpression({id: "9", latex: "c_{5}=\\operatorname{rgb}\\left(255-255c_{g}\\left(t_{0}\\right),255-255c_{b}\\left(t_{0}\\right),255-255c_{r}\\left(t_{0}\\right)\\right)"});
+            calculator.setExpression({id: "10", latex: "\\left(\\sin\\left(4\\left(t+\\frac{\\pi t_{0}}{4}\\right)\\right)\\cos t,\\sin\\left(4\\left(t+\\frac{\\pi t_{0}}{4}\\right)\\right)\\sin t\\right)", parametricDomain: {max: "2\\pi"}});
+            calculator.setState((state => (Object.assign(state.expressions.list[10], {colorLatex: "c_{0}"}), state))(calculator.getState()));
+            calculator.setExpression({id: "11", latex: "\\frac{1}{3}\\left(\\sin\\left(3\\left(t-\\frac{\\pi t_{0}}{3}\\right)\\right)\\cos t+6,\\sin\\left(3\\left(t-\\frac{\\pi t_{0}}{3}\\right)\\right)\\sin t+3\\right)", parametricDomain: {max: "2\\pi"}});
+            calculator.setState((state => (Object.assign(state.expressions.list[11], {colorLatex: "c_{1}"}), state))(calculator.getState()));
+            calculator.setExpression({id: "12", latex: "\\frac{1}{3}\\left(\\sin\\left(3\\left(t-\\frac{\\pi t_{0}}{3}+\\pi\\right)\\right)\\cos t+6,\\sin\\left(3\\left(t-\\frac{\\pi t_{0}}{3}+\\pi\\right)\\right)\\sin t+3\\right)", parametricDomain: {max: "2\\pi"}});
+            calculator.setState((state => (Object.assign(state.expressions.list[12], {colorLatex: "c_{1}"}), state))(calculator.getState()));
+            calculator.setExpression({id: "13", latex: "\\frac{1}{2}\\left(\\sin\\left(2\\left(t-\\frac{\\pi t_{0}}{2}\\right)\\right)\\cos t-4.5,\\sin\\left(2\\left(t-\\frac{\\pi t_{0}}{2}\\right)\\right)\\sin t-1\\right)", parametricDomain: {max: "2\\pi"}});
+            calculator.setState((state => (Object.assign(state.expressions.list[13], {colorLatex: "c_{2}"}), state))(calculator.getState()));
+            calculator.setExpression({id: "14", latex: "\\frac{1}{4}\\left(\\sin\\left(3\\left(t-\\frac{2\\pi t_{0}}{3}\\right)\\right)\\cos t-7,\\sin\\left(3\\left(t+\\frac{2\\pi t_{0}}{3}\\right)\\right)\\sin t+5\\right)", parametricDomain: {max: "2\\pi"}});
+            calculator.setState((state => (Object.assign(state.expressions.list[14], {colorLatex: "c_{3}"}), state))(calculator.getState()));
+            calculator.setExpression({id: "15", latex: "\\frac{1}{3}\\left(\\sin\\left(7\\left(t+\\frac{2\\pi t_{0}}{7}\\right)\\right)\\cos t+4,\\sin\\left(7\\left(t+\\frac{2\\pi t_{0}}{7}\\right)\\right)\\sin t-3\\right)", parametricDomain: {max: "2\\pi"}});
+            calculator.setState((state => (Object.assign(state.expressions.list[15], {colorLatex: "c_{4}"}), state))(calculator.getState()));
+            calculator.setExpression({id: "16", latex: "\\frac{2}{5}\\left(\\sin\\left(2\\left(t+\\pi t_{0}\\right)\\right)\\cos t+6,\\sin\\left(2\\left(t-\\pi t_{0}\\right)\\right)\\sin t-0.5\\right)", parametricDomain: {max: "2\\pi"}});
+            calculator.setState((state => (Object.assign(state.expressions.list[16], {colorLatex: "c_{5}"}), state))(calculator.getState()));
+        </script>
         <script>
             if (!localStorage.getItem("user-counted")) {
                 localStorage.setItem("user-counted", "1");
