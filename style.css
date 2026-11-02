@@ -1,0 +1,78 @@
+@font-face {
+    font-family: "font";
+    src: url("assets/font.ttf") format("truetype");
+}
+
+body {
+    background-repeat: repeat;
+    background-color: rgba(0,0,0,0.2);
+    background-image: url("assets/bg.gif"); /* image credit: https://art.teleportacia.org/observation/vernacular/stars/ */
+    background-blend-mode: multiply;
+    font-family: "font", "font", cursive;
+    font-size: 16pt;
+    line-height: 1.5;
+    color: white;
+}
+
+h1 { text-align: center; }
+
+h2 {
+    font-size: 28px;
+    line-height: 0.8;
+    margin: 0 0 8px;
+}
+
+.main > h2 + h3 { margin-top: 0px; }
+
+.main > h2 + p { margin-top: 0px; }
+
+.main > h3 + p { margin-top: -25px; }
+
+.main {
+    position: relative;
+    display: flow-root;
+    width: 800px;
+    margin: 0 auto 40px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.main::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--gallery-bg, url("assets/bg.png"));
+    opacity: 0.2;
+    z-index: -1;
+}
+
+.main > :last-child:not(img) { margin-bottom: 0; }
+
+.main img {
+    float: left;
+    width: 200px;
+    aspect-ratio: 1;
+    height: auto;
+    margin: -20px 20px -20px -20px;
+}
+.main img.right { float: right; margin: -20px -20px -20px 20px; }
+
+.main > p ~ img { float: left; margin: 20px 0 -20px 0; }
+.main > p + img { margin-left: -20px; }
+.main > p ~ img:last-child { margin-right: -20px; }
+
+.main[style*="--gallery-bg"]::before { background-size: 12.5% 20%; }
+
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    width: 800px;
+    margin: 0 auto;
+}
+
+.tabs a {
+    display: block;
+    padding: 8px 14px;
+    background-color: #444;
+    color: white;
+}
