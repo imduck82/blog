@@ -6,6 +6,61 @@
         <meta name="description" content="silly website for my silly things :3c" data-es="página web boba para mis bobadas :3c" data-attr="content">
         <meta name="author" content="zephyrus" data-es="zéfiro" data-attr="content">
         <link rel="stylesheet" href="style.css">
+        <style>
+            .wiki {
+                max-width:800px;
+                margin:-40px auto 40px;
+                font:15px sans-serif;
+                color:#202122;
+            }
+
+            .wiki .row {
+                display:flex;
+                justify-content:space-between;
+                align-items:flex-start;
+            }
+
+            .wiki .fig {
+                --lines:1;
+                --height:250px;
+                flex:none;
+                display:table;
+                border-collapse:collapse;
+                text-align:center;
+                line-height:0;
+                margin:8px 0 0;
+                border:2px solid #c8ccd1;
+                border-bottom:0;
+                background:#f8f9fa;
+            }
+
+            .wiki .fig img {
+                height:calc(var(--height) - var(--lines) * 21px - 18px);
+                width:auto;
+                margin:3px;
+                border:1px solid #c8ccd1;
+                background:#c8ccd1;
+                vertical-align:middle;
+            }
+
+            .wiki .fig > div {
+                display:table-caption;
+                caption-side:bottom;
+                text-align:start;
+                line-height:21px;
+                height:calc(var(--lines) * 21px);
+                overflow:hidden;
+                padding:0 6px 6px;
+                word-break:break-word;
+                background:inherit;
+                border:2px solid #c8ccd1;
+                border-top:0;
+            }
+
+            .wiki .fig > div a { text-decoration:none; }
+            .wiki .fig > div a:hover { text-decoration:underline; }
+            .wiki .fig:nth-child(2):last-child { margin-inline:auto; }
+        </style>
     </head>
 
     <body>
@@ -16,18 +71,16 @@
         <div class="main">
             <h2 data-es="misceláneo">miscellaneous</h2>
             <p
-           
+
             data-es="aquí van mis pequeños proyectos y experimentos (mayormente digitales), ya que la página de <a href='journal.html'>mi diario</a> está reservada para cosas que me suceden en el día a día en la vida real :p"
             data-html>here go my small projects and tinkers (mostly digital ones), since the page <a href='journal.html'>my diary</a> is reserved for sharing stuff that happens to me in my day to day, in real life :p</p>
         </div>
         <div class="main">
             <h2 data-es="desmos_0">desmos_0</h2>
             <p
-           
             data-es="podemos ver una ecuación polar simple que está girando, dibujada en <a href='https://www.desmos.com/calculator'>desmos</a>. a parte de la fórmula algo complicada para el color, no es muy interesante. dato curioso: para integrar esta ventana de calculadora gráfica, solicité una <a href='https://www.desmos.com/my-api?lang=es'>clave api</a> gratis de proyecto personal. soy el fan #1 de desmos, son geniales."
             data-html>we can see a very simple spinning polar equation as represented in <a href='https://www.desmos.com/calculator'>desmos</a>. other than the somewhat complicated color formula, it isn't too fascinating. fun fact: to embed this graphing calculator window, i had to apply for a free personal project use <a href='https://www.desmos.com/my-api'>api key</a>. i'm desmos' #1 glazer, they're amazing</p>
         </div>
-
         <script defer src="https://www.desmos.com/api/v1.12/calculator.js?apiKey=e87ef15dcd7241adb4291a376ce81c59"></script>
         <div id="calculator" style="width: 800px; height: 400px; margin: -40px auto 40px;"></div>
         <script type="module">
@@ -60,6 +113,57 @@
             calculator.setExpression({id: "16", latex: "\\frac{2}{5}\\left(\\sin\\left(2\\left(t+\\pi t_{0}\\right)\\right)\\cos t+6,\\sin\\left(2\\left(t-\\pi t_{0}\\right)\\right)\\sin t-0.5\\right)", parametricDomain: {max: "2\\pi"}});
             calculator.setState((state => (Object.assign(state.expressions.list[16], {colorLatex: "c_{5}"}), state))(calculator.getState()));
         </script>
+        <div class="main">
+            <h2 data-es="wikipedia_1">wikipedia_1</h2>
+            <p
+            data-es="desde siempre me ha encantado malgastar horas leyendo artículos aleatorios inconexos de <a href='https://es.wikipedia.org/'>wikipedia</a>, tratando de entender lo que pudiera. como tributo, he escogido arbitrariamente algunas figuras que creo que son graciosas."
+            data-html>i've always enjoyed wasting away hours by reading random disconnected <a href='https://en.wikipedia.org/'>wikipedia</a> articles, trying to understand whatever i could. as a tribute, i've arbitrarily chosen some figures that i think are whimsical.</p>
+        </div>
+        <div class="wiki">
+            <div class="row">
+                <div class="fig">
+                    <a href="https://en.wikipedia.org/wiki/Mahjong" data-es="https://es.wikipedia.org/wiki/Mahjong" data-attr="href"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Open_the_mah-jong_table_%283599421021%29.jpg/330px-Open_the_mah-jong_table_%283599421021%29.jpg"></a>
+                    <div data-es="Mesa automática de mahjong abierta.">Interior of an automatic mahjong table.</div>
+                </div>
+                <div class="fig" style="--lines:2">
+                    <a href="https://en.wikipedia.org/wiki/Qualia" data-es="https://es.wikipedia.org/wiki/Qualia" data-attr="href"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Solid_red.png"></a>
+                    <div data-es="La &quot;rojeza&quot; del rojo es un ejemplo de qualia.">The "redness" of red is an example of a quale.</div>
+                </div>
+                <div class="fig">
+                    <a href="https://en.wikipedia.org/wiki/Theory" data-es="https://es.wikipedia.org/wiki/Teor%C3%ADa" data-attr="href"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Black_question_mark.png/250px-Black_question_mark.png"></a>
+                    <div data-es="Imagen de una <i><a href='https://es.wikipedia.org/wiki/Signo_de_interrogaci%C3%B3n'>interrogación</a></i>." data-html>Image of a <i><a href="https://en.wikipedia.org/wiki/Question_mark">Question mark</a></i>.</div>
+                </div>
+            </div>
+            <div class="row">
+                <div style="flex:1; min-width:0;">
+                    <div class="row">
+                        <div class="fig">
+                            <a href="https://en.wikipedia.org/wiki/Alchemy" data-es="https://es.wikipedia.org/wiki/Alquimia" data-attr="href"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Harley_3469%2C_f.33v.jpg"></a>
+                            <div data-es="<i><a href='https://es.wikipedia.org/wiki/Splendor_Solis'>Splendor Solis</a></i>." data-html><i><a href="https://en.wikipedia.org/wiki/Splendor_Solis">Splendor Solis</a></i>.</div>
+                        </div>
+                        <div class="fig">
+                            <a href="https://en.wikipedia.org/wiki/Cat" data-es="https://es.wikipedia.org/wiki/Felis_catus" data-attr="href"><img src="assets/galleryC.jpg"></a>
+                            <div data-es="Gato durmiendo durante el día.">Cat sleeping during the day.</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="fig" style="--lines:2">
+                            <a href="https://en.wikipedia.org/wiki/Art_therapy" data-es="https://es.wikipedia.org/wiki/Arteterapia" data-attr="href"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Fortier_DAKAR_art_therapy_30dec11_300.jpg"></a>
+                            <div data-es="Taller de arteterapia en <i><a href='https://es.wikipedia.org/wiki/Senegal'>Senegal</a></i>." data-html>Art therapy workshop in <i><a href="https://en.wikipedia.org/wiki/Senegal">Senegal</a></i>.</div>
+                        </div>
+                        <div class="fig">
+                            <a href="https://en.wikipedia.org/wiki/Function_(mathematics)" data-es="https://es.wikipedia.org/wiki/Funci%C3%B3n_(matem%C3%A1tica)" data-attr="href"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Injection_keine_Injektion_2a.svg/250px-Injection_keine_Injektion_2a.svg.png"></a>
+                            <div data-es="Diagrama de una función.">Diagram of a function.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fig" style="--lines:2; --height:508px">
+                    <a href="https://en.wikipedia.org/wiki/Shopping_cart_theory" data-es="https://es.wikipedia.org/wiki/Teor%C3%ADa_del_carrito_de_supermercado" data-attr="href"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Target_shopping_cart_1_2017-03-13.jpg/250px-Target_shopping_cart_1_2017-03-13.jpg"></a>
+                    <div data-es=" Un carrito de supermercado que no ha sido devuelto a su depósito (visto detras).">A shopping cart that has not been returned to its deposit (seen in the back)</div>
+                </div>
+            </div>
+        </div>
+
         <script src="common.js"></script>
     </body>
 </html>
