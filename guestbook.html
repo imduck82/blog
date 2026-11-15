@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title data-es="libro de visitas">guestbook</title>
+        <meta name="description" content="silly website for my silly things :3c" data-es="página web boba para mis bobadas :3c" data-attr="content">
+        <meta name="author" content="zephyrus" data-es="zéfiro" data-attr="content">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <h1 id="title" data-es="libro de visitas">guestbook</h1>
+
+        <nav class="tabs"></nav>
+        <div class="main">
+            <h2 data-es="libro de visitas">guestbook</h2>
+            <p data-es="no solo me encanta hablar sin parar (si has leído <a href='journal.html'>mi diario</a> lo podrías haber adivinado), sino también adoro conocer sobre la vida de otra gente. precisamente por eso he hecho este libro de visitantes, para que cualquier lector del blog pueda compartir lo que quiera públicamente, quizá un poema o un <a href='misc.html#wikipedia_1'>artículo de wikipedia</a> chulo, o simplemente un dato curioso. lo que sea!! ende, te invito a que uses el formulario de debajo para enviar un mensaje. ten en cuenta que todos son manualmente revisados y traducidos, por lo que evita escribir cosas negativas, pues se borraran. espero oir de vosotros :)" data-html>
+            not only do i love non-stop talking (which you could've guessed if you've read <a href='/journal.html'>my journal</a>), i also adore getting to know about other people's life. that's why i've made this guestbook, for anyone who reads this blog to publicly share anything they want, perhaps a poem or an interesting <a href='/misc.html#wikipedia_1'>wikimedia article</a>, or simply a fun fact about themselves. anything!! therefore, i invite you to use the form below to send in a message. beware that all messages are manually reviewed, so avoid sending many messages, or writing negative stuff, as it will be removed. hope to hear from you soon :)
+            </p>
+        </div>
+        <div class="main" id="form">
+            <h2 data-es="formulario">form</h2>
+            <input id="user" autocomplete="off" maxlength="30" placeholder="name" data-es="nombre" data-attr="placeholder"></input>
+            <textarea id="message" autocomplete="off" maxlength="1000" placeholder="message" data-es="mensaje" data-attr="placeholder" style="max-width: 752px; min-width: 752px; min-height: 32px; max-height: 100px;"></textarea>
+            <button id="send" autocomplete="off" data-es="enviar">send</button>
+        </div>
+        <div class="main" id="entries">
+            <h2 data-es="mensajes" style="margin-left: 0px;">messages</h2>
+        </div>
+
+        <script src="common.js"></script>
+        <script>
+            fetch("https://api.jsonpad.io/lists/4e314cc1-5a0d-4654-ab9c-28472ac6c36d/items/edcc261f-af5d-484e-a6c4-d7ab44bf3d12/data", {headers: {"x-api-token": "VPJzCCazPZqnJl7dbY5voua6TgAI7Ail"}, cache: "no-store"})
+            .then(async response => { document.getElementById("entries").append(...(await response.json()).entries.reverse().flatMap(e => [
+                Object.assign(document.createElement("h3"), {textContent: e.user}),
+                Object.assign(document.createElement("small"), {textContent: new Date(e.timestamp).toLocaleString("en-GB", {day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit"})}),
+                (p => (p.dataset.es = e["message-es"] || e["message"], p.setAttribute("data-html", ""), p))(Object.assign(document.createElement("p"), {innerHTML: e["message-en"] || e["message"]})),
+                (e["reply-en"] || e["reply"]) && (b => (b.dataset.es = `<small><u>respuesta de zef:</u></small> ${e["reply-es"] || e["reply"]}`, b.setAttribute("data-html", ""), b))(Object.assign(document.createElement("blockquote"), {innerHTML: `<small><u>zeph's reply:</u></small> ${e["reply-en"] || e["reply"]}`, style: "margin: -5px 15px 5px;"}))].filter(Boolean)));
+                set_lang(document.documentElement.lang);});
+        </script>
+        <script>
+            document.getElementById("send").onclick = () => {
+                if (!document.getElementById("user").value.trim() || !document.getElementById("message").value.trim()) return;
+                document.getElementById("send").disabled = true;
+                fetch("https://api.jsonpad.io/lists/4e314cc1-5a0d-4654-ab9c-28472ac6c36d/items/89f2b7b4-60aa-4af3-b92d-475a69d0dcbd/data", {method: "POST", headers: {"x-api-token": "MjLmKLw5oy0QWrlDh5G+Amkoxb4P/sDo", "Content-Type": "application/json"}, body: JSON.stringify({entries: [{user: document.getElementById("user").value.trim(), message: document.getElementById("message").value.trim(), lang: document.documentElement.lang, timestamp: new Date().toISOString()}]})})
+                .then(response => {
+                    if (response.ok) { document.getElementById("form").remove(); }
+                    else { document.getElementById("send").disabled = false; }}); };
+        </script>
+    </body>
+</html>

@@ -28,6 +28,12 @@ h2 {
 
 .main > h3 + p { margin-top: -25px; }
 
+#entries h3 { margin: 15px 15px auto; }
+
+#entries p  { margin: 0; }
+
+#entries p { white-space: pre-line; }
+
 .main {
     position: relative;
     display: flow-root;
@@ -75,4 +81,28 @@ h2 {
     padding: 8px 14px;
     background-color: #444;
     color: white;
+    border: 0;
 }
+
+button, input, textarea {
+    display: block;
+    margin: 12px 0;
+    background-color: #444;
+    color: white;
+    border: 0;
+    font-family: "font";
+    src: url("assets/font.ttf") format("truetype");
+}
+
+button, input, textarea {
+    display: block;
+    margin: 12px 0;
+    padding: 2px 4px;
+    background-color: #444;
+    color: white;
+    border: 0;
+    font-size: 14px;
+    font-family: "font";
+    }
+
+button:hover { background-color: #333; }

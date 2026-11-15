@@ -39,8 +39,9 @@ function init_tabs() {
     document.querySelector("nav.tabs").innerHTML = `
         <a href="/blog/" data-es="inicio">home</a>
         <a href="journal.html" data-es="mi diario">my diary</a>
-        <a href="contact.html" data-es="contacto">contact</a>
+        <a href="guestbook.html" data-es="visitantes">guestbook</a>
         <a href="misc.html" data-es="otros">other</a>
+        <a href="contact.html" data-es="contacto">contact</a>
         <a href="" onclick="toggle_lang(); return false" data-es="english">español</a>`;
 }
 

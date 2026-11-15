@@ -107,7 +107,7 @@
             if (!localStorage.getItem("user-counted")) {
                 localStorage.setItem("user-counted", "1");
                 fetch("https://api.jsonpad.io/lists/4e314cc1-5a0d-4654-ab9c-28472ac6c36d/items/870864f1-20fe-4258-94e1-43d617af0a57/data",
-                {headers: {"x-api-token": "MjLmKLw5oy0QWrlDh5G+Amkoxb4P/sDo"}})
+                {headers: {"x-api-token": "VPJzCCazPZqnJl7dbY5voua6TgAI7Ail"}})
                 .then(response => response.json())
                 .then(data => {
                     fetch("https://api.jsonpad.io/lists/4e314cc1-5a0d-4654-ab9c-28472ac6c36d/items/870864f1-20fe-4258-94e1-43d617af0a57/data",
@@ -115,7 +115,7 @@
                     displayCount(Number(data.count ?? 999998)+1);});
             } else {
                 fetch("https://api.jsonpad.io/lists/4e314cc1-5a0d-4654-ab9c-28472ac6c36d/items/870864f1-20fe-4258-94e1-43d617af0a57/data",
-                {headers: {"x-api-token": "MjLmKLw5oy0QWrlDh5G+Amkoxb4P/sDo"}})
+                {headers: {"x-api-token": "VPJzCCazPZqnJl7dbY5voua6TgAI7Ail"}})
                 .then(response => response.json())
                 .then(data => displayCount(data.count ?? 999999));}
         </script>
